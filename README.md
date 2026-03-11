@@ -37,8 +37,10 @@ Devices
 - File: devices.txt
 - Format
   - A single line with Region=(Your Region)
+  - Two examples below. Only define one "Region=".
     - Region=US
-  - No spaces in names.
+    - Region=US-CA-SO
+  - No spaces in names
   - Order, comma separated
   - Serial/MAC,Role,Name
     - AA:BB:CC:DD:EE:FF,***CU***,MechCoreUSBCompanion
@@ -48,8 +50,11 @@ Regions
 - File: regions.txt
 - Format
   - Order, equal sign separated
-  - Region=Command to set radio
-    - US=set radio 910.525,62.5,7,5
+  - Region=Command to set radio   
+    - Region naming format, dash separated
+    - Country-State/Territory/Etc-Additional Area
+      - US=set radio 910.525,62.5,7,5
+      - US-CA-SO=set radio 927.875,62.5,7,8
 - Provides some default regions that can be specified in devices.txt to keep you out of trouble and give newcomers a saftey net.
 - I added a few custom regions I found on the www with thier sources. 
 
@@ -83,7 +88,7 @@ Regions
 - File: cmd_rep_mob.txt
 
 # Thanks To
-Tommy Ekstrand of [Austin Mesh](austinmesh.org) for the great info they provide. Also, for providing a [Github](https://github.com/austinmesh/www) that I've seen other meshes use as website template. 
+Tommy Ekstrand of [Austin Mesh](austinmesh.org) for the great info they provide. Also, for providing a [Github](https://github.com/austinmesh/www) that I've seen other meshes use as a website template. 
 
 # Advanced
 
