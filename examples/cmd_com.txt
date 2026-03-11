@@ -1,0 +1,11 @@
+# Putting "bash " at the beginning of a line executes a bash command.
+# All other lines are prefixed with "meshcli -s " or "meshcli -s -r -j " depending on if the device is marked as a repeater or not.
+
+infos
+get private_key
+
+set tx 10
+
+set telemetry_mode_base 0
+set telemetry_mode_env 0
+set telemetry_mode_loc 0

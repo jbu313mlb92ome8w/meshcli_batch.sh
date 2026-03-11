@@ -1,0 +1,7 @@
+# Putting "bash " at the beginning of a line executes a bash command.
+# All other lines are prefixed with "meshcli -s " or "meshcli -s -r -j " depending on if the device is marked as a repeater or not.
+
+advert
+
+# Firmware v1.14.0 onward
+#discover.neighbors

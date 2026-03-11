@@ -1,0 +1,16 @@
+# Putting "bash " at the beginning of a line executes a bash command.
+# All other lines are prefixed with "meshcli -s " or "meshcli -s -r -j " depending on if the device is marked as a repeater or not.
+
+# The "Region=" in "devices.txt" will take care of your frequency. Sometimes certain nodes need separate coding rates, that is what this code block can be used for.
+# Copy this block to other "cmd_*.txt" files if separate coding rate is needed for specific roles.
+# set radio breakout:
+# frequency,bandwidth,spread factor,coding rate
+# Uncomment (aka delete #) to use
+#####
+#set radio 910.525,62.5,7,8
+#bash echo -e "\033[0;31mThese errors are part of the reboot process.\033[0m"
+#reboot
+#bash echo -e "\033[0;31mBoard rebooting.\033[0m"
+#bash sleep 5
+#bash echo -e "\033[0;31mBoard reboot complete... hopefully.\033[0m"
+#####

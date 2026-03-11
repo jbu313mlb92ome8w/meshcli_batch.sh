@@ -1,0 +1,41 @@
+# DOES NOT APPLY TO THIS FILE: Putting "bash " at the beginning of a line executes a bash command.
+# DOES NOT APPLY TO THIS FILE: All other lines are prefixed with "meshcli -s " or "meshcli -s -r -j " depending on if the device is marked as a repeater or not.
+
+# Roles and associated files used
+
+# CB = Companion Bluetooth
+##  File: cmd_com.txt
+# CU = Companion USB
+##  File: cmd_com.txt
+
+# BR = Base Repeater
+## File: cmd_rep.txt
+## File: cmd_rep_bas.txt
+# MR = Mobile Repeater
+## File: cmd_rep.txt
+## File: cmd_rep_mob.txt
+
+# RS = Room Server
+## File: cmd_roo.txt
+# RB = Room Server/Base Repeater (Not recommended per MeshCore Documentation)
+## File: cmd_roo.txt
+## File: cmd_rep.txt
+## File: cmd_rep_bas.txt
+# RM = Room Server/Mobile Repeater (Not recommended per MeshCore Documentation)
+## File: cmd_roo.txt
+## File: cmd_rep.txt
+## File: cmd_rep_mob.txt
+
+# Refer to "regions.txt" for a list of preconfigured regions or add your own to "regions.txt".
+Region=US
+
+# No spaces in names.
+# Order, comma separated
+# Serial/MAC,Region,Role,Name
+
+# Generic
+00:00:00:00:00:00,,No_MAC
+
+# Example Devices
+AA:BB:CC:DD:EE:FF,CU,MechCoreUSBCompanion
+11:22:33:44:55:66,BD,MeshCoreBaseRepater

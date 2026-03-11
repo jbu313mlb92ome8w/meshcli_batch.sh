@@ -1,0 +1,43 @@
+#DOES NOT APPLY TO THIS FILE: Putting "bash " at the beginning of a line executes a bash command.
+#All command portions are prefixed with "meshcli -s " or "meshcli -s -r -j " depending on if the device is marked as a repeater or not.
+
+#Country codes list:
+#https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+
+#Generic country settings:
+#https://deepwiki.com/ripplebiz/MeshCore/10.2-basic-configuration
+
+#Order, equal sign separated
+#Region=Command to set frequencies
+
+#set radio command breakout:
+#frequency,bandwidth,spread factor,coding rate
+
+#Region naming format, dash separated:
+#Country-State/Territory/Etc-Additional Area
+
+US=set radio 910.525,62.5,7,5
+CA=set radio 910.525,62.5,7,5
+EU=set radio 869.525,62.5,8,5
+AU=set radio 916.8,125,9,5
+
+#Add-ons
+
+#https://birminghammesh.org/
+#Birmingham Alabama
+US-AL-BI=set radio 907.375,62.5,9,5
+
+#https://github.com/meshcore-dev/MeshCore/issues/1798
+#Southern California
+US-CA-SO=set radio 927.875,62.5,7,8
+
+#https://tennmesh.com/settings/
+#Tennessee
+US-TN=set radio 910.525,62.5,7,8
+
+#https://ntxmesh.com/join/#network
+#North Texas
+US-TX-NO=set radio 910.525,62.5,7,5
+
+#https://github.com/meshcore-dev/MeshCore/issues/1970
+#IN=set radio
