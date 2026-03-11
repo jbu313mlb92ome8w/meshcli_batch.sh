@@ -20,8 +20,8 @@ I also had to revert firmware versions on all of my devices, including one on my
   - Quick example (or not), associating a device Serial/MAC with a name in devices.txt will mean that anytime you run the script the name will be updated. Great for firmware reverts or changing firmware roles... You can also associate a role in devices.txt too to run more in-depth mesh-cli commands. 
 - Edit the listed role files below to issue certian commands based on the role/purpose your node is going to play on the MeshCore network.
   - Another example, you have a base and mobile repeater. No need for the mobile to be cooking at the full 28dB like the base station so you can set it to 21dB. Each one specified in their respective .txt.
-- > [!TIP]
-- > **Look in the example folder to see a scenario on how this script can be used.**
+> [!TIP]
+> **Look in the example folder to see a scenario on how this script can be used.**
   - I haven't played with the Room Server (or a no-no Room Repeater) firmware yet so I don't have that .txt filled out. However, I have implented the files and script to work with them. 
 
 ## Files
