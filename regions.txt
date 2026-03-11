@@ -1,19 +1,19 @@
 #DOES NOT APPLY TO THIS FILE: Putting "bash " at the beginning of a line executes a bash command.
 #All command portions are prefixed with "meshcli -s " or "meshcli -s -r -j " depending on if the device is marked as a repeater or not.
 
-#Country codes list:
+#Country codes list
 #https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 
-#Generic country settings:
+#Generic country settings
 #https://deepwiki.com/ripplebiz/MeshCore/10.2-basic-configuration
 
 #Order, equal sign separated
 #Region=Command to set radio
 
-#set radio command breakout:
+#set radio command breakout
 #frequency,bandwidth,spread factor,coding rate
 
-#Region naming format, dash separated:
+#Region naming format, dash separated
 #Country-State/Territory/Etc-Additional Area
 
 US=set radio 910.525,62.5,7,5
