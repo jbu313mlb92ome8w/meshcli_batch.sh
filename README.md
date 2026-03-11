@@ -8,7 +8,7 @@ Batch Scipt for MeshCore USB Serial Programming.
 
 ### Background
 I could not get the flasher or config web apps to work using the Chromimium borwser. Instead I had to confiure my nodes manually over serial. 
-<sup>I think they didn't work because they require google and that is blocked on my network.<sup>
+- <sub>I think they didn't work because they require google and that is blocked on my network. Those apps spam them bad.<sub>
 
 ## Usage
 #### place meshcli_batch.sh and all needed files in the same directory. 
