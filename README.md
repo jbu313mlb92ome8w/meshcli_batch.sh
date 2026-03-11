@@ -19,8 +19,30 @@ I also had to revert firmware versions on all of my devices, including one on my
 ## Files
 
 ### Core Files
-Script = 
+Script
+- File: meshcli_batch.sh
+- The script that brings it all together. `meshcli_batch.sh -h`
 
+Devices
+- File: devices.txt
+- Format
+ - A single line with Regio=(Your Region)
+  - Region=US
+ - No spaces in names.
+ - Order, comma separated
+ - Serial/MAC,Role,Name
+  - AA:BB:CC:DD:EE:FF,CU,MechCoreUSBCompanion
+  - 11:22:33:44:55:66,BD,MeshCoreBaseRepater
+
+
+Regions
+- File: regions.txt
+- Format
+ - Order, equal sign separated
+ - Region=Command to set radio
+  - US=set radio 910.525,62.5,7,5
+- Provides some default regions that can be specified in devices.txt to keep you out of trouble and give newcomers a saftey net.
+- I added a few custom regions I found on the www with thier sources. 
 
 ### Roles and Associated Files Used
 
@@ -50,3 +72,6 @@ RM = Room Server/Mobile Repeater (Not recommended per MeshCore Documentation)
 - File: cmd_roo.txt
 - File: cmd_rep.txt
 - File: cmd_rep_mob.txt
+
+# Thanks to
+austinmesh.org for the great info they provide.
