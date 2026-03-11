@@ -3,7 +3,7 @@
 
 # The "Region=" in "devices.txt" will take care of your frequency. Sometimes certain nodes need separate coding rates, that is what this code block can be used for.
 # Copy this block to other "cmd_*.txt" files if separate coding rate is needed for specific roles.
-# set radio breakout:
+# set radio breakout
 # frequency,bandwidth,spread factor,coding rate
 # Uncomment (aka delete #) to use
 #####
