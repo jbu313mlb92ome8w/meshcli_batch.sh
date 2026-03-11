@@ -22,7 +22,7 @@ I also had to revert firmware versions on all of my devices, including one on my
 Script = 
 
 
-### Roles and Associated Files Used\
+### Roles and Associated Files Used
 
 CB = Companion Bluetooth
 - File: cmd_com.txt
@@ -37,7 +37,7 @@ BR = Base Repeater
 MR = Mobile Repeater
 - File: cmd_rep.txt
 - File: cmd_rep_mob.txt
-\
+
 RS = Room Server
 - File: cmd_roo.txt
 
