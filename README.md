@@ -118,4 +118,4 @@ All included .txt files have a variation of these two lines at the top. However,
 <br>
 <br>
 <br>
-Funny story while developing this script involving these two code blocks. I copied and pasted the set radio code block directing into the script and ran it thinking the `reboot` command was going to be run within `meshcli`... it did not.. and my computer rebooted.
+Funny story while adding the region.txt support into this script involving these two code blocks. I copied and pasted the set radio code block directly into the script and ran it thinking the `reboot` command was going to be run within `meshcli`... it did not... and my computer rebooted.
