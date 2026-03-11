@@ -2,14 +2,14 @@
 Batch Scipt for MeshCore USB Serial Programming.
 
 ## Info
-Only tested with Heltec v4 as that is all I have access to currently.\
-Handy to setup and configure multiple nodes at the same time and with consistent settings.\
-I made notes in each file for what they do. I'll try and list how it all works below, but if you have any trouble consider looking in the files.\
-I dont't have a micro$lop OS to test this setup on. Someone let me know if it works?
+Only tested with Heltec v4 as that is all I have access to currently.<br>
+Handy to setup and configure multiple nodes at the same time and with consistent settings.<br>
+I made notes in each file for what they do. I'll try and list how it all works below, but if you have any trouble consider looking in the files.<br>
+I dont't have a micro$lop OS to test this setup on. Someone let me know if it works?<br>
 
 ### Background
-I could not get the flasher or config web apps to work using the Chromimium borwser. Instead I had to confiure my nodes manually over serial. *I think they didn't work because they require google and that is blocked on my network. Those apps spam them alot.*\
-I also had to revert firmware versions on all of my devices, including one on my roof. Having this script up there and being able to revert the firmware and configure it with a few key presses was nice, instead of having to type them all in. 
+I could not get the flasher or config web apps to work using the Chromimium borwser. Instead I had to confiure my nodes manually over serial. *I think they didn't work because they require google and that is blocked on my network. Those apps spam them alot.*<br>
+I also had to revert firmware versions on all of my devices, including one on my roof. Having this script up there and being able to revert the firmware and configure it with a few key presses was nice, instead of having to type them all in.<br>
 
 ## Usage
 - Place meshcli_batch.sh and all needed files in the same directory. 
@@ -100,10 +100,10 @@ bash sleep 5
 bash echo -e "\033[0;31mBoard reboot complete... hopefully.\033[0m"
 #####
 ```
-This code block is in the [example/cmd_rep_bas.txt](/examples/cmd_rep_bas.txt) and [blanks/cmd_pre.txt](/blanks/cmd_pre.txt) files commented out. You can see the purpose of it listed in the commented out portion. I use this to change the coding rate to 8 on my base repeater while leaving everything else at the US default of 5.\
+This code block is in the [example/cmd_rep_bas.txt](/examples/cmd_rep_bas.txt) and [blanks/cmd_pre.txt](/blanks/cmd_pre.txt) files commented out. You can see the purpose of it listed in the commented out portion. I use this to change the coding rate to 8 on my base repeater while leaving everything else at the US default of 5.<br>
 I left it commented out in the provided .txts in case someone chose a region besides the US and didn't see this code block or wasn't sure of it's purpose.
-\
-\
+<br>
+<br>
 Companions do not seem to throw errors when the reboot command is issued. The repeaters do. I am not sure about room servers yet, but i am guessg they throw the errors as well. I haven't had an issue with reconnecting to the specified device, even with other LoRa boards conneted at the same time, after the reboot with five the five second sleep. It could possibibly be tuned down, but I figure it would take more time to tune then it would save me a few spare seconds every now and then. Alos, I other devices LoRa and computer may need a bit londeger to boot or read the device again.
 <br>
 <br>
@@ -114,7 +114,8 @@ Companions do not seem to throw errors when the reboot command is issued. The re
 # All other lines are prefixed with "meshcli -s " or "meshcli -s -r -j " depending on if the device is marked as a repeater or not.
 ```
 All included .txt files have a variation of these two lines at the top. However, these two exact lines are the most common and most powerful. As you can see in the first line you can trigger bash commands from these files. Be very careful of that.
-\
-\
-\
+<br>
+<br>
+<br>
+<br>
 Funny story while developing this script involving these two code blocks. I copied and pasted the set radio code block directing into the script and ran it thinking the `reboot` command was going to be run within `meshcli`... it did not.. and my computer rebooted.
