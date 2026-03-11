@@ -1,4 +1,4 @@
-# meshcli_batch.sh
+# MeshCLI_Batch
 Batch Scipt for MeshCore USB Serial Programming.
 
 ## Info
