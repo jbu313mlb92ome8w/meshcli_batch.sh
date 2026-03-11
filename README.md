@@ -15,6 +15,8 @@ I also had to revert firmware versions on all of my devices, including one on my
 - Place meshcli_batch.sh and all needed files in the same directory. 
 - Make meshcli_batch.sh executable with `sudo chmod +x meshcli_batch.sh`
 - Execute script with `/your/directory/meshcli_batch.sh`
+  - `sudo` is not needed to run this script.
+  - Your user may need to be part of the `dialout` group to access serail USB devices.
   - I like to change to the directory the script is in and run it with `./meshcli_batch.sh`
 - Edit the listed Core Files below to configure and automate identifying your devices with thier name and Serial/MAC, device name, device role, your region/frequencies.
   - Quick example (or not), associating a device Serial/MAC with a name in devices.txt will mean that anytime you run the script the name will be updated. Great for firmware reverts or changing firmware roles... You can also associate a role in devices.txt too to run more in-depth mesh-cli commands. 
