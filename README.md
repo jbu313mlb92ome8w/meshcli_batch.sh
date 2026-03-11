@@ -18,6 +18,35 @@ Batch Scipt for MeshCore USB Serial Programming
 #### Required
 ##### meshcli_batch.sh
 ##### cmd_(file(s) related to the role your device is).txt
-###### Detailed below.
+##### -Detailed below.
 
 #### 
+
+
+
+
+
+# Roles and associated files used
+
+# CB = Companion Bluetooth
+##  File: cmd_com.txt
+# CU = Companion USB
+##  File: cmd_com.txt
+
+# BR = Base Repeater
+## File: cmd_rep.txt
+## File: cmd_rep_bas.txt
+# MR = Mobile Repeater
+## File: cmd_rep.txt
+## File: cmd_rep_mob.txt
+
+# RS = Room Server
+## File: cmd_roo.txt
+# RB = Room Server/Base Repeater (Not recommended per MeshCore Documentation)
+## File: cmd_roo.txt
+## File: cmd_rep.txt
+## File: cmd_rep_bas.txt
+# RM = Room Server/Mobile Repeater (Not recommended per MeshCore Documentation)
+## File: cmd_roo.txt
+## File: cmd_rep.txt
+## File: cmd_rep_mob.txt
