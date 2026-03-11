@@ -87,10 +87,25 @@ Regions
 - File: cmd_rep.txt
 - File: cmd_rep_mob.txt
 
+## Useful Resources
+
+https://pypi.org/project/meshcore-cli/
+- Check `meshcli` version
+https://deepwiki.com/ripplebiz/MeshCore/10.2-basic-configuration
+- Big Help
+https://github.com/meshcore-dev/MeshCore/blob/main/docs/faq.md#513-q-can-i-use-a-raspberry-pi-to-update-a-meshcore-radio
+- Manual USB serial flashing. Dind't find until after I solved that myself.
+  - "Non-merged bin keeps the existing Bluetooth pairing database"
+  - "Merged bin overwrites everything including the bootloader, existing Bluetooth pairing database, but keeps configurations."
+- esptool flasher for MeshCore soming soon!
+https://wiki.meshcoreaus.org/books/doc-firmware/page/doc-cli-reference
+- Just found. Seems useful and will be checking out.
+
+
 # Thanks To
 Tommy Ekstrand of [Austin Mesh](austinmesh.org) for the great info they provide. Also, for providing a [Github](https://github.com/austinmesh/www) that I've seen other meshes use as a website template. 
 
-# Advanced
+## Advanced
 
 ```
 # Putting "bash " at the beginning of a line executes a bash command.
