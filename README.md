@@ -38,9 +38,9 @@ Devices
 Regions
 - File: regions.txt
 - Format
- - Order, equal sign separated
- - Region=Command to set radio
-  - US=set radio 910.525,62.5,7,5
+  - Order, equal sign separated
+  - Region=Command to set radio
+    - US=set radio 910.525,62.5,7,5
 - Provides some default regions that can be specified in devices.txt to keep you out of trouble and give newcomers a saftey net.
 - I added a few custom regions I found on the www with thier sources. 
 
