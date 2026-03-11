@@ -111,7 +111,7 @@ This code block is in the [example/cmd_rep_bas.txt](/examples/cmd_rep_bas.txt) a
 I left it commented out in the provided .txts in case someone chose a region besides the US and didn't see this code block or wasn't sure of it's purpose.
 <br>
 <br>
-Companions do not seem to throw errors when the reboot command is issued. The repeaters do. I am not sure about room servers yet, but i am guessg they throw the errors as well. I haven't had an issue with reconnecting to the specified device, even with other LoRa boards conneted at the same time, after the reboot with five the five second sleep. It could possibibly be tuned down, but I figure it would take more time to tune then it would save me a few spare seconds every now and then. Alos, I other devices LoRa and computer may need a bit londeger to boot or read the device again.
+Companions do not seem to throw errors when the `meshcli reboot` command is issued. The repeaters do. I am not sure about room servers yet, but i am guessg they throw the errors as well being that they appear to run the same commands. I haven't had an issue with reconnecting to the specified device, even with other LoRa boards conneted at the same time, after the reboot with the five second sleep. It could possibibly be tuned down, but I figure it would take more time to tune then it would save me a few spare seconds every now and then. Alos, other devices LoRa and computer may need a bit londeger to boot or read the device again.
 <br>
 <br>
 <br>
