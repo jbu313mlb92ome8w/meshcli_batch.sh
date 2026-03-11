@@ -80,5 +80,5 @@ Regions
 - File: cmd_rep.txt
 - File: cmd_rep_mob.txt
 
-# Thanks to
-austinmesh.org for the great info they provide.
+# Thanks To
+The [Austin Mesh](austinmesh.org) for the great info they provide.
