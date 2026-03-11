@@ -26,13 +26,13 @@ Script
 Devices
 - File: devices.txt
 - Format
- - A single line with Regio=(Your Region)
-  - Region=US
- - No spaces in names.
- - Order, comma separated
- - Serial/MAC,Role,Name
-  - AA:BB:CC:DD:EE:FF,CU,MechCoreUSBCompanion
-  - 11:22:33:44:55:66,BD,MeshCoreBaseRepater
+  - A single line with Regio=(Your Region)
+   - Region=US
+  - No spaces in names.
+  - Order, comma separated
+  - Serial/MAC,Role,Name
+   - AA:BB:CC:DD:EE:FF,CU,MechCoreUSBCompanion
+   - 11:22:33:44:55:66,BD,MeshCoreBaseRepater
 
 
 Regions
