@@ -16,12 +16,13 @@ I could not get the flasher or config web apps to work using the Chromimium borw
 #### execute script with `/your/directory/meshcli_batch.sh`
 ##### I like to change to the directory the script is in and run it with `./meshcli_batch.sh`
 
+## Files
+
+### Core Files
+Script = 
 
 
-
-
-
-## Roles and associated files used
+### Roles and Associated Files Used
 
 CB = Companion Bluetooth
 - File: cmd_com.txt
