@@ -86,6 +86,13 @@ The [Austin Mesh](austinmesh.org) for the great info they provide.
 # Advanced
 
 ```
+# Putting "bash " at the beginning of a line executes a bash command.
+# All other lines are prefixed with "meshcli -s " or "meshcli -s -r -j " depending on if the device is marked as a repeater or not.
+```
+All included .txt files have a variation of these two lines at the top. However, these two exact lines are the most common and most powerful. As you can see in the first line you can trigger bash commands from these files. Be very careful of that.
+<br>
+<br>
+```
 # The "Region=" in "devices.txt" will take care of your frequency. Sometimes certain nodes need separate coding rates, that is what this code block can be used for.
 # Copy this block to other "cmd_*.txt" files if separate coding rate is needed for specific roles.
 # set radio breakout:
@@ -105,15 +112,6 @@ I left it commented out in the provided .txts in case someone chose a region bes
 <br>
 <br>
 Companions do not seem to throw errors when the reboot command is issued. The repeaters do. I am not sure about room servers yet, but i am guessg they throw the errors as well. I haven't had an issue with reconnecting to the specified device, even with other LoRa boards conneted at the same time, after the reboot with five the five second sleep. It could possibibly be tuned down, but I figure it would take more time to tune then it would save me a few spare seconds every now and then. Alos, I other devices LoRa and computer may need a bit londeger to boot or read the device again.
-<br>
-<br>
-<br>
-<br>
-```
-# Putting "bash " at the beginning of a line executes a bash command.
-# All other lines are prefixed with "meshcli -s " or "meshcli -s -r -j " depending on if the device is marked as a repeater or not.
-```
-All included .txt files have a variation of these two lines at the top. However, these two exact lines are the most common and most powerful. As you can see in the first line you can trigger bash commands from these files. Be very careful of that.
 <br>
 <br>
 <br>
