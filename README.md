@@ -7,7 +7,7 @@ Handy to setup and configure multiple nodes at the same time and with consistent
 I made notes in each file for what they do. I'll try and list how it all works below, but if you have any trouble consider looking in the files.\
 
 ### Background
-I could not get the flasher or config web apps to work using the Chromimium borwser. Instead I had to confiure my nodes manually over serial. <sub>I think they didn't work because they require google and that is blocked on my network. Those apps spam them alot.<sub>  
+I could not get the flasher or config web apps to work using the Chromimium borwser. Instead I had to confiure my nodes manually over serial. <sub>I think they didn't work because they require google and that is blocked on my network. Those apps spam them alot.<sub><br/>
 I also had to revert firmware versions on all of my devices, including one on my roof. Having this script up there and being able to revert the firmware and configure it with a few key presses was nice, instead of having to type them all in. 
 
 ## Usage
