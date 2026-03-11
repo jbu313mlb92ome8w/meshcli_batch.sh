@@ -22,27 +22,27 @@ I also had to revert firmware versions on all of my devices, including one on my
 Script = 
 
 
-### Roles and Associated Files Used
-
-CB = Companion Bluetooth
-- File: cmd_com.txt
-CU = Companion USB
-- File: cmd_com.txt
-
-BR = Base Repeater
-- File: cmd_rep.txt
-- File: cmd_rep_bas.txt
-MR = Mobile Repeater
-- File: cmd_rep.txt
-- File: cmd_rep_mob.txt
-
-RS = Room Server
-- File: cmd_roo.txt
-RB = Room Server/Base Repeater (Not recommended per MeshCore Documentation)
-- File: cmd_roo.txt
-- File: cmd_rep.txt
-- File: cmd_rep_bas.txt
-RM = Room Server/Mobile Repeater (Not recommended per MeshCore Documentation)
-- File: cmd_roo.txt
-- File: cmd_rep.txt
-- File: cmd_rep_mob.txt
+### Roles and Associated Files Used\
+\
+CB = Companion Bluetooth\
+- File: cmd_com.txt\
+CU = Companion USB\
+- File: cmd_com.txt\
+\
+BR = Base Repeater\
+- File: cmd_rep.txt\
+- File: cmd_rep_bas.txt\
+MR = Mobile Repeater\
+- File: cmd_rep.txt\
+- File: cmd_rep_mob.txt\
+\
+RS = Room Server\
+- File: cmd_roo.txt\
+RB = Room Server/Base Repeater (Not recommended per MeshCore Documentation)\
+- File: cmd_roo.txt\
+- File: cmd_rep.txt\
+- File: cmd_rep_bas.txt\
+RM = Room Server/Mobile Repeater (Not recommended per MeshCore Documentation)\
+- File: cmd_roo.txt\
+- File: cmd_rep.txt\
+- File: cmd_rep_mob.txt\
