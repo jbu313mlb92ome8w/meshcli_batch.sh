@@ -98,7 +98,7 @@ https://deepwiki.com/ripplebiz/MeshCore/10.2-basic-configuration
 <br>
 
 https://github.com/meshcore-dev/MeshCore/blob/main/docs/faq.md#513-q-can-i-use-a-raspberry-pi-to-update-a-meshcore-radio
-- Manual USB serial flashing. Dind't find until after I solved that myself.
+- Manual USB serial flashing. Didn't find until after I solved that myself.
   - "Non-merged bin keeps the existing Bluetooth pairing database"
   - "Merged bin overwrites everything including the bootloader, existing Bluetooth pairing database, but keeps configurations."
 - esptool flasher for MeshCore soming soon!
