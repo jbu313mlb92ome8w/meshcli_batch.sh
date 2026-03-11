@@ -103,7 +103,7 @@ bash echo -e "\033[0;31mBoard reboot complete... hopefully.\033[0m"
 These code block is in the example/cmd_rep_bas.txt and blanks/cmd_pre.txt commented out. You can see the prupose of it listed in the commented oout portion. I use this to change the coding rate to 8 on my base repeater while leaving my mobile repeater at the US default of 5.\
 I left it commented out in the provided .txts in case someone chose a region besides the US and didn't see this code block or wasn't sure of it's prupose.\
 Companions do not seem to throw errors when the reboot command is issued. The repeaters do. I am not sure about room servers yet, but i am guessg they throw the errors as well. I haven't had an issue with reconnecting to the specified device, even with other LoRa boards conneted at the same time, after the reboot with five the five second sleep. It could possibibly be tuned down, but I figure it would take more time to tune then it would save me a few spare seconds every now and then. Alos, I other devices LoRa and computer may need a bit londeger to boot or read the device again.\
-\
+
 ```
 # Putting "bash " at the beginning of a line executes a bash command.
 # All other lines are prefixed with "meshcli -s " or "meshcli -s -r -j " depending on if the device is marked as a repeater or not.
