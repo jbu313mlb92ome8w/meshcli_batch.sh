@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-version=1
+version=1.1
 
 # abort on error, undefined var, or failed pipe
 set -euo pipefail
@@ -7,7 +7,7 @@ set -euo pipefail
 # Column padding between fields
 col_pad=3
 
-# Parse command line arguments for quick status checks
+# Parse command line arguments
 LIST_DEVICES=false
 SHOW_REGION=false
 LIST_MAPPED=false
@@ -125,10 +125,12 @@ if $LIST_DEVICES; then
     max_name_len=${#header_name}
 
     for dev in "${DEVICES[@]}"; do
-        mac=$(udevadm info --name="$dev" \
-            | grep ID_SERIAL_SHORT= \
-            | cut -d= -f2 \
-            | sed -E 's/(..)/\1:/g; s/:$//')
+        raw_serial=$(udevadm info --name="$dev" | grep ID_SERIAL_SHORT= | cut -d= -f2)
+        if [[ "$raw_serial" != *:* ]]; then
+            mac=$(echo "$raw_serial" | sed -E 's/(..)/\1:/g; s/:$//')
+        else
+            mac="$raw_serial"
+        fi
         [[ -z "$mac" ]] && mac="N/A"
         mac_lc=$(echo "$mac" | tr '[:upper:]' '[:lower:]')
         role=${MAC_ROLE_MAP["$mac_lc"]:-N/A}
@@ -148,8 +150,6 @@ if $LIST_DEVICES; then
     max_dev_len=$(( max_dev_len + col_pad ))
     max_mac_len=$(( max_mac_len + col_pad ))
     max_role_len=$(( max_role_len + col_pad ))
-    # Last column does not get padding
-    # max_name_len remains unchanged
 
     # Calculate total width for the divider
     total_width=$(( max_dev_len + max_mac_len + max_role_len + max_name_len ))
@@ -246,8 +246,6 @@ if $SHOW_REGION; then
     max_freq_len=$(( max_freq_len + col_pad ))
     max_bw_len=$(( max_bw_len + col_pad ))
     max_sf_len=$(( max_sf_len + col_pad ))
-    # Last column does not get padding
-    # max_cr_len remains unchanged
 
     # Calculate total width for the divider
     total_width=$(( max_reg_len + max_freq_len + max_bw_len + max_sf_len + max_cr_len ))
@@ -306,8 +304,6 @@ if $LIST_MAPPED; then
     # Add padding to each column width except the last
     max_mac_len=$(( max_mac_len + col_pad ))
     max_role_len=$(( max_role_len + col_pad ))
-    # Last column does not get padding
-    # max_name_len remains unchanged
 
     # Calculate total width for the divider
     total_width=$(( max_mac_len + max_role_len + max_name_len ))
@@ -332,8 +328,8 @@ declare -A REGION_COMMANDS
 DEFAULT_REGION=""
 if [[ -f "regions.txt" ]]; then
     while IFS= read -r line; do
-        [[ -z "$line" ]] && continue                # skip empty lines
-        [[ "$line" == \#* ]] && continue            # skip comment lines
+        [[ -z "$line" ]] && continue
+        [[ "$line" == \#* ]] && continue
         if [[ "$line" == Region=* ]]; then
             DEFAULT_REGION="${line#Region=}"
             DEFAULT_REGION=$(echo "$DEFAULT_REGION" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
@@ -351,8 +347,8 @@ fi
 declare -A MAC_NAME_MAP MAC_ROLE_MAP DEVICE_REGION_MAP
 if [[ -f "devices.txt" ]]; then
     while IFS=',' read -r mac role name; do
-        [[ -z "$mac" ]] && continue                # skip empty lines
-        [[ "$mac" == \#* ]] && continue            # skip comment lines
+        [[ -z "$mac" ]] && continue
+        [[ "$mac" == \#* ]] && continue
         mac=$(echo "$mac" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
         role=$(echo "$role" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
         name=$(echo "$name" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
@@ -376,6 +372,9 @@ fi
 declare -A ROLE_FILES_MAP
 ROLE_FILES_MAP["CB"]="cmd_com.txt"
 ROLE_FILES_MAP["CU"]="cmd_com.txt"
+ROLE_FILES_MAP["CR"]="cmd_com.txt cmd_com_rep.txt"
+ROLE_FILES_MAP["TD"]="cmd_tde.txt"
+ROLE_FILES_MAP["TR"]="cmd_tde.txt cmd_tde_rep.txt"
 ROLE_FILES_MAP["BR"]="cmd_rep.txt cmd_rep_bas.txt"
 ROLE_FILES_MAP["MR"]="cmd_rep.txt cmd_rep_mob.txt"
 ROLE_FILES_MAP["RS"]="cmd_roo.txt"
@@ -390,33 +389,37 @@ if [[ ${#DEVICES[@]} -eq 0 ]]; then
     exit 1
 fi
 
-# Define constants
-max_idx_width=6
+# Collect data and calculate max widths for interactive mode
+declare -a INTERACTIVE_ROWS
+max_dev_len=0
+max_mac_len=0
+max_role_len=0
+max_name_len=0
 
-# Define headers
+# Define header lengths
 header_dev="Device Path(s)"
 header_mac="Serial/MAC"
 header_role="Role"
 header_name="Name"
 
-# Initialize max lengths with header lengths
+# Get maximum lengths of headers
 max_dev_len=${#header_dev}
 max_mac_len=${#header_mac}
 max_role_len=${#header_role}
 max_name_len=${#header_name}
 
-# Simulated data arrays (replace with actual logic)
-declare -a DEVICES=("/dev/ttyACM0")
-declare -A MAC_ROLE_MAP=([8c:fd:49:b7:91:24]="CU")
-declare -A MAC_NAME_MAP=([8c:fd:49:b7:91:24]="Hobbit")
-declare -a INTERACTIVE_ROWS
-
-# Process devices to find max lengths
 for dev in "${DEVICES[@]}"; do
-    mac="8C:FD:49:B7:91:24"
+    raw_serial=$(udevadm info --name="$dev" | grep ID_SERIAL_SHORT= | cut -d= -f2)
+    if [[ "$raw_serial" != *:* ]]; then
+        mac=$(echo "$raw_serial" | sed -E 's/(..)/\1:/g; s/:$//')
+    else
+        mac="$raw_serial"
+    fi
+    [[ -z "$mac" ]] && mac="N/A"
     mac_lc=$(echo "$mac" | tr '[:upper:]' '[:lower:]')
     role=${MAC_ROLE_MAP["$mac_lc"]:-N/A}
     name=${MAC_NAME_MAP["$mac_lc"]:-N/A}
+
     INTERACTIVE_ROWS+=("$dev|$mac|$role|$name")
 
     (( ${#dev} > max_dev_len )) && max_dev_len=${#dev}
@@ -425,32 +428,25 @@ for dev in "${DEVICES[@]}"; do
     (( ${#name} > max_name_len )) && max_name_len=${#name}
 done
 
-# Apply padding to column widths (except the last)
+# Add padding to each column width except the last
 max_dev_len=$(( max_dev_len + col_pad ))
 max_mac_len=$(( max_mac_len + col_pad ))
 max_role_len=$(( max_role_len + col_pad ))
 
-# Calculate total width for the divider (sum of all column widths)
+# Calculate total width for the divider
 total_width=$(( max_dev_len + max_mac_len + max_role_len + max_name_len ))
 
-# Generate divider line
+# Create a divider line
 divider=$(printf '%*s' "$total_width" '' | tr ' ' '-')
 
-# Print Header with leading indentation to align with data content
-printf "%${max_idx_width}s" ""
+echo "Available serial devices:"
 printf "%-${max_dev_len}s%-${max_mac_len}s%-${max_role_len}s%s\n" "$header_dev" "$header_mac" "$header_role" "$header_name"
-
-# Print Divider with leading indentation
-printf "%${max_idx_width}s" ""
 echo "$divider"
 
-# Print Data Rows
 idx=1
 for row in "${INTERACTIVE_ROWS[@]}"; do
     IFS='|' read -r d m r n <<< "$row"
-    idx_str=$(printf "  %d) " "$idx")
-    printf "%-6s" "$idx_str"
-    printf "%-${max_dev_len}s%-${max_mac_len}s%-${max_role_len}s%s\n" "$d" "$m" "$r" "$n"
+    printf "  %d) %-${max_dev_len}s%-${max_mac_len}s%-${max_role_len}s%s\n" "$idx" "$d" "$m" "$r" "$n"
     ((idx++))
 done
 
@@ -466,10 +462,12 @@ while true; do
 done
 
 # Determine MAC, role, and name for the selected device
-selected_mac=$(udevadm info --name="$SELECTED_DEVICE" \
-    | grep ID_SERIAL_SHORT= \
-    | cut -d= -f2 \
-    | sed -E 's/(..)/\1:/g; s/:$//')
+raw_serial=$(udevadm info --name="$SELECTED_DEVICE" | grep ID_SERIAL_SHORT= | cut -d= -f2)
+if [[ "$raw_serial" != *:* ]]; then
+    selected_mac=$(echo "$raw_serial" | sed -E 's/(..)/\1:/g; s/:$//')
+else
+    selected_mac="$raw_serial"
+fi
 [[ -z "$selected_mac" ]] && selected_mac="N/A"
 selected_mac_upper=$(echo "$selected_mac" | tr '[:lower:]' '[:upper:]')
 selected_mac_lc=$(echo "$selected_mac" | tr '[:upper:]' '[:lower:]')
@@ -535,20 +533,23 @@ if [[ -z "$SELECTED_ROLE" || "$SELECTED_ROLE" == "N/A" ]]; then
     echo "Available role codes:"
     echo "CB = Companion Bluetooth"
     echo "CU = Companion USB"
+    echo "CR = Companion Repeater (Not recommended per MeshCore Documentation)"
+    echo "TD = T-Deck"
+    echo "TR = T-Deck Repeater (Not recommended per MeshCore Documentation)"
     echo "BR = Base Repeater"
     echo "MR = Mobile Repeater"
     echo "RS = Room Server"
-    echo "RB = Room Server/Repeater Base (Not recommended per MeshCore Documentation)"
+    echo "RB = Room Server/Base Repeater (Not recommended per MeshCore Documentation)"
     echo "RM = Room Server/Mobile Repeater (Not recommended per MeshCore Documentation)"
     echo ""
     while true; do
         read -rp "Please enter the role code: " role_input
         role_input=$(echo "$role_input" | tr '[:lower:]' '[:upper:]')
-        if [[ "$role_input" =~ ^(CB|CU|BR|MR|RS|RB|RM)$ ]]; then
+        if [[ "$role_input" =~ ^(CB|CU|CR|TD|TR|BR|MR|RS|RB|RM)$ ]]; then
             SELECTED_ROLE="$role_input"
             break
         else
-            echo "Invalid role code. Acceptable values are CB, CU, BR, MR, RS, RB, RM."
+            echo "Invalid role code. Acceptable values are CB, CU, CR, TD, TR, BR, MR, RS, RB, RM."
         fi
     done
 else
@@ -558,7 +559,7 @@ fi
 # Resolve command files for the determined role; default to companion set if unknown
 IFS=' ' read -r -a ROLE_FILES <<< "${ROLE_FILES_MAP["${SELECTED_ROLE^^}"]}"
 if [[ ${#ROLE_FILES[@]} -eq 0 ]]; then
-    ROLE_FILES=("cmd_com.txt")                      # fallback to companion commands
+    ROLE_FILES=("cmd_com.txt")
 fi
 
 # Fixed generic pre- and post-files
@@ -603,7 +604,6 @@ fi
 REGION_CMD="${REGION_COMMANDS[$SELECTED_REGION]}"
 REGION_FREQ=""
 if [[ -n "$REGION_CMD" ]]; then
-    # Remove "set radio " prefix if present
     REGION_FREQ=$(echo "$REGION_CMD" | sed 's/^set radio //')
 fi
 
@@ -630,8 +630,8 @@ done
 run_commands() {
     local label="$1" file="$2"
     while IFS= read -r line || [[ -n $line ]]; do
-        [[ -z "$line" ]] && continue                      # skip empty lines
-        [[ "$line" == \#* ]] && continue                  # skip comment lines
+        [[ -z "$line" ]] && continue
+        [[ "$line" == \#* ]] && continue
         if [[ "$line" == bash\ * ]]; then
             cmd="${line#bash }"
             bash -c "$cmd"
@@ -639,7 +639,7 @@ run_commands() {
         fi
         read -ra ARGS <<< "$line"
         CMD=(meshcli -s "$SELECTED_DEVICE")
-        [[ "$SELECTED_ROLE" =~ R ]] && CMD+=(-r -j)       # add -r -j for any repeater role
+        [[ "$SELECTED_ROLE" =~ R ]] && CMD+=(-r -j)
         CMD+=("${ARGS[@]}")
         echo "${CMD[@]}"
         "${CMD[@]}"
@@ -649,7 +649,7 @@ run_commands() {
 # Set mesh name if requested
 set_mesh_name() {
     CMD=(meshcli -s "$SELECTED_DEVICE")
-    [[ "$SELECTED_ROLE" =~ R ]] && CMD+=(-r -j)           # add -r -j for any repeater role
+    [[ "$SELECTED_ROLE" =~ R ]] && CMD+=(-r -j)
     CMD+=(set name "$MESH_NAME")
     echo "${CMD[@]}"
     "${CMD[@]}"
@@ -671,7 +671,7 @@ execute_region_and_reboot() {
     echo -e "\033[0;31mThese errors, if any, are part of the reboot process.\033[0m"
 
     CMD=(meshcli -s "$SELECTED_DEVICE")
-    [[ "$SELECTED_ROLE" =~ R ]] && CMD+=(-r -j)           # add -r -j for any repeater role
+    [[ "$SELECTED_ROLE" =~ R ]] && CMD+=(-r -j)
     CMD+=(reboot)
     echo "${CMD[@]}"
     "${CMD[@]}"
