@@ -46,7 +46,7 @@ Devices
   - Order, comma separated
   - Serial/MAC,Role,Name
     - AA:BB:CC:DD:EE:FF,***CU***,MechCoreUSBCompanion
-    - 11:22:33:44:55:66,***BD***,MeshCoreBaseRepater
+    - 11:22:33:44:55:66,***BR***,MeshCoreBaseRepater
 
 Regions
 - File: regions.txt
