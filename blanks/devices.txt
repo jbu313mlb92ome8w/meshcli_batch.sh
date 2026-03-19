@@ -38,7 +38,7 @@
 # Refer to "regions.txt" for a list of preconfigured regions or add your own to "regions.txt".
 Region=
 
-# No spaces in names.
+# Names: No spaces and 32 characters max.
 # Order, comma separated
 # Serial/MAC,Role,Name
 
