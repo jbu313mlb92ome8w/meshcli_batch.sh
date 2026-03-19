@@ -68,6 +68,17 @@ Regions
 ***CU*** = Companion USB
 - File: cmd_com.txt
 
+***CR*** = Companion Repeater (Not recommended per MeshCore Documentation)
+- File: cmd_com.txt
+- File: cmd_com_rep.txt
+
+***TD*** = T-Deck
+- File: cmd_tde.txt
+
+***TR*** = T-Deck Repeater (Not recommended per MeshCore Documentation)
+- File: cmd_tde.txt
+- File: cmd_tde_rep.txt
+
 ***BR*** = Base Repeater
 - File: cmd_rep.txt
 - File: cmd_rep_bas.txt
