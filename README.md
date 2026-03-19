@@ -106,7 +106,7 @@ https://pypi.org/project/meshcore-cli/
 - Check `meshcli` version
 <br>
 
-https://deepwiki.com/ripplebiz/MeshCore/10.2-basic-configuration
+https://deepwiki.com/ripplebiz/MeshCore
 - Big Help
 <br>
 
